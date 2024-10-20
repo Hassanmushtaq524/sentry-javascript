@@ -8,6 +8,21 @@ interface InternalTheme extends NonNullable<FeedbackInternalOptions['themeLight'
   interactiveFilter: string;
 }
 
+const GREEN = 'rgba(34, 139, 34, 1)';
+
+const DEFAULT_CUSTOM: InternalTheme = {
+  foreground: '#1f2937', // dark navy
+  background: '#f9fafb', // off-white
+  accentForeground: '#ffffff', // white
+  accentBackground: GREEN, // custom green color
+  successColor: '#10b981', // light green
+  errorColor: '#ef4444', // light red
+  border: '2px solid rgba(31, 41, 55, 0.2)', // darker border
+  boxShadow: '0px 6px 30px rgba(0, 0, 0, 0.15)', // stronger shadow
+  outline: '2px auto var(--accent-background)',
+  interactiveFilter: 'brightness(98%)',
+};
+
 const DEFAULT_LIGHT: InternalTheme = {
   foreground: '#2b2233',
   background: '#ffffff',
