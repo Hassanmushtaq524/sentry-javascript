@@ -21,7 +21,7 @@ export type CronJobParams = {
 );
 
 export type CronJob = {
-  //
+  // Cron JOBBING
 };
 
 export type CronJobConstructor = {
