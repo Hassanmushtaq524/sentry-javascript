@@ -11,6 +11,7 @@ interface ReplayCanvasOptions {
   enableManualSnapshot?: boolean;
   maxCanvasSize?: [width: number, height: number];
   quality: 'low' | 'medium' | 'high';
+  frameRate?: number;  // Add frame rate control
 }
 
 type GetCanvasManager = (options: CanvasManagerOptions) => CanvasManagerInterface;
@@ -89,6 +90,7 @@ export const _replayCanvasIntegration = ((options: Partial<ReplayCanvasOptions> 
             ...getCanvasManagerOptions,
             enableManualSnapshot,
             maxCanvasSize,
+            frameRate: options.framerate || 2, //default to 2 fps
             errorHandler: (err: unknown) => {
               try {
                 if (typeof err === 'object') {
