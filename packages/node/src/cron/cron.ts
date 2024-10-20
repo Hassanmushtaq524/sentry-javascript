@@ -94,24 +94,10 @@ export function instrumentCron<T>(lib: T & CronJobConstructor, monitorSlug: stri
       const cronString = replaceCronNames(cronTime);
 
       async function monitoredTick(context: unknown, onComplete?: unknown): Promise<void> {
-  return withMonitor(
-    monitorSlug,
-    async () => {
-      try {
-        await onTick(context, onComplete);
-        Sentry.captureCheckIn({
-          monitorSlug,
-          status: 'ok',
-        });
-      } catch (e) {
-        captureException(e);
-        Sentry.captureCheckIn({
-          monitorSlug,
-          status: 'error',
-        });
-        throw e;
-      }
-    },
+      const checkInId = Sentry.captureCheckIn({
+  monitorSlug: monitorSlug,
+  status: 'in_progress',
+});,
     {
       schedule: { type: 'crontab', value: cronString },
       timezone: timeZone || undefined,
