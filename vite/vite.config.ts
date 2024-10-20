@@ -9,9 +9,6 @@ export default defineConfig({
     coverage: {
       enabled: true,
       reportsDirectory: './coverage',
-    },
-    typecheck: {
-      tsconfig: './tsconfig.test.json',
-    },
+    }
   },
 });
