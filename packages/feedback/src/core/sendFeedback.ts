@@ -7,7 +7,7 @@ import { FEEDBACK_API_SOURCE } from '../constants';
 //Import deez nuts I got motion
 
 /**
- * Public API to send a Feedback item to Sentry
+ * Public API to send a Feedback item to Sentry /meow
  */
 export const sendFeedbackToSentry: SendFeedback = (
   params: SendFeedbackParams,
