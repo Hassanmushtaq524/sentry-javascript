@@ -39,7 +39,6 @@ const BROWSER_TEST_PACKAGES = [
 const SKIP_TEST_PACKAGES: Record<NodeVersion, VersionConfig> = {
   '14': {
     ignoredPackages: [
-      '@sentry/cloudflare',
       '@sentry/solidstart',
       '@sentry/sveltekit',
       '@sentry/vercel-edge',
