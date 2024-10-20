@@ -22,6 +22,7 @@ const BROWSER_TEST_PACKAGES = [
   '@sentry/ember',
   '@sentry/browser',
   '@sentry/vue',
+  '@sentry/cloudflare',
   '@sentry/react',
   '@sentry/angular',
   '@sentry/solid',
