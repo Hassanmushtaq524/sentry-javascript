@@ -6,6 +6,8 @@ export type CronJobParams = {
   onTick: (context: unknown, onComplete?: unknown) => void | Promise<void>;
   onComplete?: () => void | Promise<void>;
   start?: boolean | null;//
+  setHeartbeat?: boolean | null; //add an optional param for a heartbeat when initializing the object
+  context?: unknown;//meow fucking with crons yessir cronsw WHAT ARE WE DOING HERE ANOTHER BANGER COMMIT wdwdwwd are we still cracked?
   runOnInit?: boolean | null; 
   unrefTimeout?: boolean | null;
 } & (
