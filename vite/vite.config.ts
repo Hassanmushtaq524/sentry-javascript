@@ -6,5 +6,9 @@ export default defineConfig({
   },
   test: {
     globals: true
+  },
+  coverage: {
+      enabled: true,
+      reportsDirectory: './coverage',
   }
 });
