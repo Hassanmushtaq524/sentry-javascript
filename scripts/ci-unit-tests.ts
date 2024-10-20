@@ -21,6 +21,7 @@ const DEFAULT_SKIP_PACKAGES = ['@sentry/profiling-node', '@sentry/bun', '@sentry
 const BROWSER_TEST_PACKAGES = [
   '@sentry/ember',
   '@sentry/browser',
+  '@sentry/cloudflare',
   '@sentry/vue',
   '@sentry/react',
   '@sentry/angular',
