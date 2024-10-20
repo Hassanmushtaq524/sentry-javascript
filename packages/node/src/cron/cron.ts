@@ -93,16 +93,21 @@ export function instrumentCron<T>(lib: T & CronJobConstructor, monitorSlug: stri
       const cronString = replaceCronNames(cronTime);
 
       async function monitoredTick(context: unknown, onComplete?: unknown): Promise<void> {
-        return withMonitor(
-          monitorSlug,
-          async () => {
-            try {
-              await onTick(context, onComplete);
-            } catch (e) {
-              captureException(e);
-              throw e;
-            }
-          },
+        const monitorConfig = {
+  schedule: { type: 'crontab', value: cronString },
+  checkinMargin: 2,  // Allows for 2 minutes of delay before marking as missed
+  maxRuntime: 10,    // Max allowed runtime in minutes
+  timezone: timeZone || 'UTC',
+};
+
+return withMonitor(monitorSlug, async () => {
+  try {
+    await onTick(context, onComplete);
+  } catch (e) {
+    captureException(e);
+    throw e;
+  }
+}, monitorConfig);
           {
             schedule: { type: 'crontab', value: cronString },
             timezone: timeZone || undefined,
