@@ -6,7 +6,8 @@ export type CronJobParams = {
   addHeartbeat?: boolean | null;
   onTick: (context: unknown, onComplete?: unknown) => void | Promise<void>;
   onComplete?: () => void | Promise<void>;
-  start?: boolean | null;
+  start?: boolean | null;//
+  
   context?: unknown;//meow fucking with crons yessir crons
   runOnInit?: boolean | null;
   unrefTimeout?: boolean | null;
