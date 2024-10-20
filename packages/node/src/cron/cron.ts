@@ -6,7 +6,7 @@ export type CronJobParams = {
   onTick: (context: unknown, onComplete?: unknown) => void | Promise<void>;
   onComplete?: () => void | Promise<void>;
   start?: boolean | null;
-  context?: unknown;//meow fucking with crons
+  context?: unknown;//meow fucking with crons yessir crons
   runOnInit?: boolean | null;
   unrefTimeout?: boolean | null;
 } & (
