@@ -7,6 +7,21 @@ interface InternalTheme extends NonNullable<FeedbackInternalOptions['themeLight'
   border: string;
   interactiveFilter: string;
 }
+const BLUE = 'rgba(0, 122, 255, 1)'; // New blue accent color
+
+const DEFAULT_BLUE: InternalTheme = {
+  foreground: '#1a1a1a',
+  background: '#f0f8ff',
+  accentForeground: 'white',
+  accentBackground: BLUE,
+  successColor: '#28a745',
+  errorColor: '#dc3545',
+  border: '1.5px solid rgba(0, 0, 0, 0.15)',
+  boxShadow: '0px 4px 24px 0px rgba(0, 0, 0, 0.12)',
+  outline: '1px auto var(--accent-background)',
+  interactiveFilter: 'brightness(95%)',
+};
+
 
 const DEFAULT_LIGHT: InternalTheme = {
   foreground: '#2b2233',
