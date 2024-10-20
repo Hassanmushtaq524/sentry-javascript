@@ -3,7 +3,6 @@ import { replaceCronNames } from './common';
 
 export type CronJobParams = {
   cronTime: string | Date;
-  addHeartbeat?: boolean | null;//w
   onTick: (context: unknown, onComplete?: unknown) => void | Promise<void>;
   onComplete?: () => void | Promise<void>;
   start?: boolean | null;//
