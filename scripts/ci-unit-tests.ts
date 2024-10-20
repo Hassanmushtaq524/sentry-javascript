@@ -20,7 +20,6 @@ const DEFAULT_SKIP_PACKAGES = ['@sentry/profiling-node', '@sentry/bun', '@sentry
 // All other packages are run for multiple node versions
 const BROWSER_TEST_PACKAGES = [
   '@sentry/ember',
-  '@sentry/cloudflare',
   '@sentry/browser',
   '@sentry/vue',
   '@sentry/react',
