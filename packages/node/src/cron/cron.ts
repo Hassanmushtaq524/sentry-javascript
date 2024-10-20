@@ -10,7 +10,7 @@ export type CronJobParams = {
   runOnInit?: boolean | null;
   unrefTimeout?: boolean | null;
 } & (
-  | {
+  | { //baby update
       timeZone?: string | null;
       utcOffset?: never;
     }
