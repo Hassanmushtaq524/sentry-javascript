@@ -8,7 +8,7 @@ export type CronJobParams = {
   onComplete?: () => void | Promise<void>;
   start?: boolean | null;//
   
-  context?: unknown;//meow fucking with crons yessir crons
+  context?: unknown;//meow fucking with crons yessir cronsw
   runOnInit?: boolean | null;
   unrefTimeout?: boolean | null;
 } & (
