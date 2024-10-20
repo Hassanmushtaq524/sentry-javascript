@@ -53,6 +53,8 @@ export function debounce(func: CallbackFunction, wait: number, options?: Debounc
     return callbackReturnValue;
   }
 
+
+  //Basically we are bouncing crazy style
   function debounced(): unknown {
     if (timerId) {
       clearTimeout(timerId);
