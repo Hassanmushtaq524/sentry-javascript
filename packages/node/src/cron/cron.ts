@@ -93,21 +93,27 @@ export function instrumentCron<T>(lib: T & CronJobConstructor, monitorSlug: stri
       const cronString = replaceCronNames(cronTime);
 
       async function monitoredTick(context: unknown, onComplete?: unknown): Promise<void> {
-        const monitorConfig = {
-  schedule: { type: 'crontab', value: cronString },
-  checkinMargin: 2,  // Allows for 2 minutes of delay before marking as missed
-  maxRuntime: 10,    // Max allowed runtime in minutes
-  timezone: timeZone || 'UTC',
-};
+      const checkInId = Sentry.captureCheckIn({
+  monitorSlug: monitorSlug,
+  status: 'in_progress',
+});
 
-return withMonitor(monitorSlug, async () => {
-  try {
-    await onTick(context, onComplete);
-  } catch (e) {
-    captureException(e);
-    throw e;
-  }
-}, monitorConfig);
+try {
+  await onTick(context, onComplete);
+  Sentry.captureCheckIn({
+    checkInId,
+    monitorSlug: monitorSlug,
+    status: 'ok',
+  });
+} catch (e) {
+  captureException(e);
+  Sentry.captureCheckIn({
+    checkInId,
+    monitorSlug: monitorSlug,
+    status: 'error',
+  });
+  throw e;
+};
           {
             schedule: { type: 'crontab', value: cronString },
             timezone: timeZone || undefined,
