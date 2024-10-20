@@ -14,10 +14,10 @@ interface ReplayCanvasOptions {
 }
 
 type GetCanvasManager = (options: CanvasManagerOptions) => CanvasManagerInterface;
-export interface ReplayCanvasIntegrationOptions {
-  enableManualSnapshot?: boolean;
-  maxCanvasSize?: number;
-  recordCanvas: true;
+export interface ReplayCanvasSentryIntegration {
+  allowManualSnapshot?: boolean;
+  setMaxCanvasSize?: number;
+  activeRecordCanvas: true;
   getCanvasManager: GetCanvasManager;
   sampling: {
     canvas: number;
