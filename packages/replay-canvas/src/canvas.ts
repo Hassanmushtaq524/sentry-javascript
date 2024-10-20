@@ -11,6 +11,8 @@ interface ReplayCanvasOptions {
   enableManualSnapshot?: boolean;
   maxCanvasSize?: [width: number, height: number];
   quality: 'low' | 'medium' | 'high';
+    frameRate?: number;  // Add frame rate control
+
 }
 
 type GetCanvasManager = (options: CanvasManagerOptions) => CanvasManagerInterface;
