@@ -8,7 +8,7 @@ import { FEEDBACK_API_SOURCE } from '../constants';
 /**
  * Public API to send a Feedback item to Sentry
  */
-export const sendFeedback: SendFeedback = (
+export const sendFeedbackToSentry: SendFeedback = (
   params: SendFeedbackParams,
   hint: EventHint & { includeReplay?: boolean } = { includeReplay: true },
 ): Promise<string> => {
@@ -19,9 +19,6 @@ export const sendFeedback: SendFeedback = (
   // We want to wait for the feedback to be sent (or not)
   const client = getClient();
 
-  if (!client) {
-    throw new Error('No client setup, cannot send feedback.');
-  }
 
   if (params.tags && Object.keys(params.tags).length) {
     getCurrentScope().setTags(params.tags);
@@ -57,22 +54,6 @@ export const sendFeedback: SendFeedback = (
       ) {
         resolve(eventId);
       }
-
-      if (response && typeof response.statusCode === 'number' && response.statusCode === 0) {
-        return reject(
-          'Unable to send Feedback. This is because of network issues, or because you are using an ad-blocker.',
-        );
-      }
-
-      if (response && typeof response.statusCode === 'number' && response.statusCode === 403) {
-        return reject(
-          'Unable to send Feedback. This could be because this domain is not in your list of allowed domains.',
-        );
-      }
-
-      return reject(
-        'Unable to send Feedback. This could be because of network issues, or because you are using an ad-blocker',
-      );
     });
   });
 };
