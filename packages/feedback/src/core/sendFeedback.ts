@@ -4,7 +4,7 @@ import { getCurrentScope } from '@sentry/core';
 import type { Event, EventHint, SendFeedback, SendFeedbackParams, TransportMakeRequestResponse } from '@sentry/types';
 import { getLocationHref } from '@sentry/utils';
 import { FEEDBACK_API_SOURCE } from '../constants';
-//Import deez nuts
+//Import deez nuts I got motion
 
 /**
  * Public API to send a Feedback item to Sentry
